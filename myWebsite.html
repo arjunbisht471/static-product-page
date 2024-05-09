@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+        header{
+            width: 100%;
+            height: 70px;
+            background-color: black;
+        }
+        #product-container{
+            height: 100vh;
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content:center;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        .card{
+            width: 20%;
+            height: 300px;
+            border-radius: 8px;
+            background-color: #dadada;
+        }
+        .card img{
+            width: 100%;
+            height: 240px;
+            border-top-left-radius:8px ;
+            border-top-right-radius:8px ;
+        }
+        .card_body{
+            background-color: green;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 40px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="Logo">Ecommerce</a>
+            <ul>
+                <li>Home</li>
+                <li>About us</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+    </header>
+    <div id="product-container">
+    </div>
+    <script>
+        const products = [
+            { imgSrc: 'https://img.freepik.com/free-photo/view-cooked-crawfish_23-2150426277.jpg?t=st=1715233230~exp=1715233830~hmac=830b913d72ae4bb74b326012c6dd5e738c47808391007848aaecc4c8afa0efcf', name: 'Chicken', price: '$10' },
+            { imgSrc: 'https://img.freepik.com/premium-photo/close-up-portrait-young-woman-holding-drink_1048944-16713109.jpg?t=st=1715233230~exp=1715233830~hmac=60b0e5abc002f45e8335476a9c13ee64a5de78a44d197bf8294a2b6d987d5ce3', name: 'Juice', price: '$5' },
+            { imgSrc: 'https://img.freepik.com/premium-photo/colored-sweet-baked-donuts-black-background-top-view-rustic-style_187166-39783.jpg?auto=format&fit=crop&w=315&h=220', name: 'Donuts', price: '$30' },
+            { imgSrc: 'https://img.freepik.com/premium-photo/colorfull-chocolate-candies_8043-756.jpg?auto=format&fit=crop&w=315&h=220', name: 'Jelly Beans', price: '$30' },
+            { imgSrc: 'https://img.freepik.com/premium-photo/colorfull-chocolate-candies_8043-756.jpg?auto=format&fit=crop&w=315&h=220', name: 'Jelly Beans', price: '$30' },
+            { imgSrc: 'https://img.freepik.com/premium-photo/colorfull-chocolate-candies_8043-756.jpg?auto=format&fit=crop&w=315&h=220', name: 'Jelly Beans', price: '$30' },
+            { imgSrc: 'https://img.freepik.com/premium-photo/colorfull-chocolate-candies_8043-756.jpg?auto=format&fit=crop&w=315&h=220', name: 'Jelly Beans', price: '$30' },
+        ];
+
+        // Function to create a card for each product
+        function createProductCard(product) {
+            // Create card container
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            // Create image element
+            const img = document.createElement('img');
+            img.src = product.imgSrc;
+            img.alt = product.name;
+            card.appendChild(img);
+
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card_body');
+            card.appendChild(cardBody);
+
+            // Create name element
+            const name = document.createElement('h2');
+            name.textContent = product.name;
+            cardBody.appendChild(name);
+
+            // Create price element
+            const price = document.createElement('p');
+            price.textContent = product.price;
+            cardBody.appendChild(price);
+
+            return card;
+        }
+
+        function renderProductCards() {
+            const container = document.getElementById('product-container');
+
+            container.innerHTML = '';
+            products.forEach(product => {
+                const card = createProductCard(product);
+                container.appendChild(card);
+            });
+        }
+
+        renderProductCards();
+    </script>
+</body>
+
+</html>
